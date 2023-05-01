@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Select Anidados</h1>
+    <h2>Argentina</h2>
+    <label for="select-primary">Provincia</label>
+    <select name="primary" id="select-primary">
+      <option value="">Elige una Provincia</option>
+    </select>
+    <p></p>
+
+    <label for="select-secondary">Localidad</label>
+    <select name="secondary" id="select-secondary">
+      <option value="">Elige una Localidad</option>
+    </select>
+    <p></p>
+    <script>
+      const d = document
+      const $selectPrimary = d.getElementById('select-primary')
+      const $selectSecondary = d.getElementById('select-secondary')
+
+      function loadState() {
+        fetch('https://apis.datos.gob.ar/georef/api/provincias')
+          .then((res) => (res.ok ? res.json() : Promise.reject(res)))
+          .then((json) => {
+            json.provincias.sort((a, b) => {
+              if (a.nombre > b.nombre) {
+                return 1
+              }
+              if (a.nombre < b.nombre) {
+                return -1
+              }
+              return 0
+            })
+            json['provincias'].forEach((el) => {
+              $selectPrimary.innerHTML += `<option value="${el.id}">${el.nombre}</option>`
+            })
+          })
+          .catch((err) => {
+            let message = err.statusText || 'Ocurrio un error'
+            $selectPrimary.innerHTML = `<option value="">${message}</option>`
+          })
+      }
+      function loadTowns(state) {
+        fetch(
+          `https://apis.datos.gob.ar/georef/api/localidades?provincia=${state}&campos=id,nombre&max=1000`,
+        )
+          .then((res) => (res.ok ? res.json() : Promise.reject(res)))
+          .then((json) => {
+            json.localidades.sort((a, b) => {
+              if (a.nombre > b.nombre) {
+                return 1
+              }
+              if (a.nombre < b.nombre) {
+                return -1
+              }
+              return 0
+            })
+            $selectSecondary.innerHTML = `<option value="">Elige una localidad</option>`
+            json['localidades'].forEach((el) => {
+              $selectSecondary.innerHTML += `<option value="${el.id}">${el.nombre}</option>`
+            })
+          })
+          .catch((err) => {
+            console.log(err)
+            let message = err.statusText || 'Ocurrio un error'
+            $selectSecondary.innerHTML = `<option value="">${message}</option>`
+          })
+      }
+
+      d.addEventListener('DOMContentLoaded', loadState)
+      $selectPrimary.addEventListener('change', (e) => {
+        loadTowns(e.target.value)
+      })
+    </script>
+  </body>
+</html>

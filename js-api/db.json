@@ -1,0 +1,29 @@
+{
+  "guerreros": [
+    {
+      "nombre": "Trunks",
+      "planeta": "Tierra",
+      "id": 5
+    },
+    {
+      "nombre": "Bardock",
+      "planeta": "Vegitta",
+      "id": 6
+    },
+    {
+      "nombre": "Juan",
+      "planeta": "Tierra",
+      "id": 7
+    },
+    {
+      "nombre": "Kakaroto",
+      "planeta": "Vegitta",
+      "id": 8
+    },
+    {
+      "nombre": "JUAN",
+      "planeta": "JUAN",
+      "id": 9
+    }
+  ]
+}

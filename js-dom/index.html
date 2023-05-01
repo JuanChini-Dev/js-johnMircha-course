@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" data-dark>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.2.1/hamburgers.min.css"
+    />
+  </head>
+  <body data-dark>
+    <header class="header"><h1>Ejercicio DOM</h1></header>
+    <button class="panel-btn hamburger hamburger--arrow" type="button">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <aside class="panel">
+      <nav class="menu">
+        <a href="#seccion1">Reloj Digital y Alarma</a>
+        <a href="#seccion2">Teclado</a>
+        <a href="#seccion3">Cuenta Regresiva</a>
+        <a href="#seccion4">Filtro</a>
+        <a href="#seccion5">Responsive slider</a>
+        <a href="#seccion6">Formularios</a>
+      </nav>
+    </aside>
+    <main>
+      <section id="seccion1" class="section">
+        <h2>Reloj Digital y Alarma</h2>
+        <div id="reloj"></div>
+        <div>
+          <button id="btnPlay">Iniciar Reloj</button>
+          <button id="btnStop">Detener Reloj</button>
+          <button id="activar-alarma">Activar Alarma</button>
+          <button id="desactivar-alarma">Detener Alarma</button>
+        </div>
+        <audio src="asset/siri-alarm.mp3"></audio>
+      </section>
+      <section id="seccion2" class="section">
+        <h2>Teclado</h2>
+      </section>
+      <section id="seccion3" class="section">
+        <h2>Cuenta Regresiva</h2>
+        <div id="countDown"></div>
+      </section>
+      <section id="seccion4" class="section">
+        <h2>Filtro de Busqueda</h2>
+        <input type="search" placeholder="Buscar..." class="card-filter" />
+        <article class="cards">
+          <figure class="card">
+            <img
+              src="https://placeimg.com/200/150/animals"
+              alt="Departamentos Venta"
+            />
+            <figcaption>Nature</figcaption>
+          </figure>
+          <figure class="card">
+            <img
+              src="https://placeimg.com/200/200/animals"
+              alt="Departamentos Venta"
+            />
+            <figcaption>Animals</figcaption>
+          </figure>
+          <figure class="card">
+            <img
+              src="https://placeimg.com/200/200/animals"
+              alt="Departamentos Alquiler"
+            />
+            <figcaption>Nature</figcaption>
+          </figure>
+          <figure class="card">
+            <img
+              src="https://placeimg.com/200/200/animals"
+              alt="Departamentos Alquiler"
+            />
+            <figcaption>Nature</figcaption>
+          </figure>
+        </article>
+      </section>
+      <section id="seccion5" class="section">
+        <h2>Responsive slider</h2>
+        <div class="slider">
+          <div class="slider-slides">
+            <div class="slider-slide active">
+              <img src="https://placeimg.com/400/400/animals" alt="animals" />
+            </div>
+            <div class="slider-slide">
+              <h4>Diapositiva 2</h4>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Deserunt accusantium sed saepe aliquam! Impedit quod, enim quasi
+                magni facere deserunt ipsam cum earum ut nesciunt aut nobis
+                laborum explicabo aliquam.
+              </p>
+            </div>
+            <div class="slider-slide">
+              <img src="https://placeimg.com/400/400/nature" alt="nature" />
+            </div>
+            <div class="slider-slide">
+              <h4>Diapositiva 4</h4>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Deserunt accusantium sed saepe aliquam! Impedit quod, enim quasi
+                magni facere deserunt ipsam cum earum ut nesciunt aut nobis
+                laborum explicabo aliquam.
+              </p>
+            </div>
+          </div>
+          <div class="slider-btns">
+            <a class="prev" href="#">&laquo;</a>
+            <a class="next" href="#">&laquo;</a>
+          </div>
+        </div>
+      </section>
+      <section id="seccion6" class="section">
+        <h2>Formularios</h2>
+        <form class="contact-form">
+          <legend>Envie sus comentarios</legend>
+          <input
+            type="text"
+            name="name"
+            placeholder="Escribe tu nombre"
+            title="El nombre solo acepta letras y espacios en blanco"
+            pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Escriba su correo"
+            title="Email incorrecto"
+            pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"
+            required
+          />
+          <input
+            type="text"
+            name="subject"
+            placeholder="Asunto a tratar"
+            title="El asunto es requerido"
+            required
+          />
+          <textarea
+            name="comments"
+            id=""
+            cols="50"
+            rows="5"
+            placeholder="Escribe tus comentarios"
+            title="El contenido no puede superar los 255 caracteres"
+            data-pattern="^.{1,255}$"
+            required
+          ></textarea>
+          <input type="submit" value="Enviar" />
+          <div class="contact-form-loader none">
+            <img src="/asset/puff.svg" alt="" />
+          </div>
+          <div class="contact-form-response none">
+            <p>Los datos han sido enviados</p>
+          </div>
+        </form>
+      </section>
+    </main>
+    <button id="scroll-top-btn" class="hidden">&#11014;</button>
+    <button id="dark-theme-btn">🌙</button>
+    <script src="./index.js" type="module"></script>
+  </body>
+</html>
